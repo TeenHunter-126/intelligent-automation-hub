@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
 import { Code2, Cpu, Bot, Brain, Factory, Activity, Wrench } from "lucide-react";
 import { Section } from "./Section";
+
+const Scene3D = lazy(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })));
+const SkillsScene = lazy(() => import("@/components/three/SkillsScene").then((m) => ({ default: m.SkillsScene })));
 
 const categories = [
   { icon: Code2, title: "Programming", items: ["C / C++", "Python", "Ladder Logic", "Structured Text", "MATLAB"], level: 92 },
@@ -16,7 +20,16 @@ const software = ["SolidWorks", "MATLAB", "Simulink", "TIA Portal", "GX Works", 
 export function Skills() {
   return (
     <Section id="skills" eyebrow="Technical Skills" title="An engineering toolkit built for the physical world." description="Decade-ready stack spanning firmware, control, robotics, and industrial systems.">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Suspense fallback={null}>
+          <Scene3D className="!absolute inset-0" camera={{ position: [0, 0, 6], fov: 50 }}>
+            <SkillsScene />
+          </Scene3D>
+        </Suspense>
+      </div>
+
+      <div className="relative z-[1] grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {categories.map((c, i) => (
           <motion.div
             key={c.title}
@@ -63,7 +76,7 @@ export function Skills() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="mt-14"
+        className="relative z-[1] mt-14"
       >
         <div className="flex items-center gap-3 mb-5">
           <Wrench className="w-4 h-4 text-accent" />

@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import portrait from "@/assets/zia-portrait.png";
+
+const Scene3D = lazy(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })));
+const HeroScene = lazy(() => import("@/components/three/HeroScene").then((m) => ({ default: m.HeroScene })));
 
 const taglines = [
   "Building intelligent machines.",
@@ -41,28 +44,21 @@ export function Hero() {
   }, []);
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20">
-      {/* Background effects */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-float" />
-      <div className="absolute bottom-10 right-0 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-float" style={{ animationDelay: "2s" }} />
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <Suspense fallback={null}>
+          <Scene3D className="!absolute inset-0" camera={{ position: [0, 0, 6], fov: 50 }}>
+            <HeroScene />
+          </Scene3D>
+        </Suspense>
+      </div>
 
-      {/* Floating geometric elements */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-lg border border-primary/30 glass"
-          style={{
-            width: 40 + i * 8,
-            height: 40 + i * 8,
-            top: `${15 + i * 12}%`,
-            left: `${5 + (i % 2) * 85}%`,
-          }}
-          animate={{ y: [0, -20, 0], rotate: [0, 45, 0] }}
-          transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-        />
-      ))}
+      {/* Background effects overlay */}
+      <div className="absolute inset-0 grid-bg opacity-30 z-[1]" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-float z-[1]" />
+      <div className="absolute bottom-10 right-0 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-float z-[1]" style={{ animationDelay: "2s" }} />
 
-      <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-[1.3fr_1fr] gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-[1.3fr_1fr] gap-12 items-center z-[2]">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

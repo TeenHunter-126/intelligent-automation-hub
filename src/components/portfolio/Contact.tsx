@@ -1,11 +1,24 @@
 import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
 import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
 import { Section } from "./Section";
+
+const Scene3D = lazy(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })));
+const ContactScene = lazy(() => import("@/components/three/ContactScene").then((m) => ({ default: m.ContactScene })));
 
 export function Contact() {
   return (
     <Section id="contact" eyebrow="Get In Touch" title="Let's build something intelligent." description="Available for opportunities in Robotics, Automation, and Intelligent Systems — locally and internationally.">
-      <div className="max-w-2xl mx-auto">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Suspense fallback={null}>
+          <Scene3D className="!absolute inset-0" camera={{ position: [0, 0, 5], fov: 45 }}>
+            <ContactScene />
+          </Scene3D>
+        </Suspense>
+      </div>
+
+      <div className="relative z-[1] max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}

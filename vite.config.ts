@@ -4,6 +4,7 @@ import { nitro } from "nitro/vite";
 export default defineConfig({
   cloudflare: false,
   vite: {
-    plugins: [nitro({ preset: "vercel" })],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    plugins: [nitro({ preset: "vercel" } as any)],
   },
 });

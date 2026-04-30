@@ -1,5 +1,5 @@
 import { U as jsxRuntimeExports, r as reactExports, T as React } from "./server.mjs";
-import { R as ReactDOM } from "./router-C6xmONK_.mjs";
+import { R as ReactDOM } from "./router-CrUhqk8W.mjs";
 import "node:async_hooks";
 import "node:stream";
 import "node:stream/web";
@@ -7101,6 +7101,8 @@ const __iconNode = [
 ];
 const Zap = createLucideIcon("zap", __iconNode);
 const portrait = "/assets/zia-portrait-C4SagbfA.png";
+const Scene3D$2 = reactExports.lazy(() => import("./Scene3D-BJyvZLM5.mjs").then((m) => ({ default: m.Scene3D })));
+const HeroScene = reactExports.lazy(() => import("./HeroScene-Bl-qZB_9.mjs").then((m) => ({ default: m.HeroScene })));
 const taglines = [
   "Building intelligent machines.",
   "Designing human-centered automation.",
@@ -7136,25 +7138,11 @@ function Hero() {
     return `${(Math.floor(years * 10) / 10).toFixed(1)}+`;
   }, []);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "top", className: "relative min-h-screen flex items-center overflow-hidden pt-28 pb-20", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 grid-bg opacity-40" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-float" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-10 right-0 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-float", style: { animationDelay: "2s" } }),
-    [...Array(6)].map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-      motion.div,
-      {
-        className: "absolute rounded-lg border border-primary/30 glass",
-        style: {
-          width: 40 + i * 8,
-          height: 40 + i * 8,
-          top: `${15 + i * 12}%`,
-          left: `${5 + i % 2 * 85}%`
-        },
-        animate: { y: [0, -20, 0], rotate: [0, 45, 0] },
-        transition: { duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }
-      },
-      i
-    )),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-[1.3fr_1fr] gap-12 items-center", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 z-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: null, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Scene3D$2, { className: "!absolute inset-0", camera: { position: [0, 0, 6], fov: 50 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(HeroScene, {}) }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 grid-bg opacity-30 z-[1]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-float z-[1]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-10 right-0 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-float z-[1]", style: { animationDelay: "2s" } }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative max-w-7xl mx-auto px-6 w-full grid md:grid-cols-[1.3fr_1fr] gap-12 items-center z-[2]", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           motion.div,
@@ -7383,6 +7371,8 @@ function About() {
     )) })
   ] }) });
 }
+const Scene3D$1 = reactExports.lazy(() => import("./Scene3D-BJyvZLM5.mjs").then((m) => ({ default: m.Scene3D })));
+const SkillsScene = reactExports.lazy(() => import("./SkillsScene-BaTKOBgA.mjs").then((m) => ({ default: m.SkillsScene })));
 const categories = [
   { icon: CodeXml, title: "Programming", items: ["C / C++", "Python", "Ladder Logic", "Structured Text", "MATLAB"], level: 92 },
   { icon: Cpu, title: "Embedded Systems", items: ["Arduino", "STM32", "Raspberry Pi", "ESP32", "Microcontrollers"], level: 88 },
@@ -7394,7 +7384,8 @@ const categories = [
 const software = ["SolidWorks", "MATLAB", "Simulink", "TIA Portal", "GX Works", "ANSYS", "Proteus", "AutoCAD", "LabVIEW", "KiCad"];
 function Skills() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { id: "skills", eyebrow: "Technical Skills", title: "An engineering toolkit built for the physical world.", description: "Decade-ready stack spanning firmware, control, robotics, and industrial systems.", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-5", children: categories.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 z-0 pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: null, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Scene3D$1, { className: "!absolute inset-0", camera: { position: [0, 0, 6], fov: 50 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SkillsScene, {}) }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative z-[1] grid md:grid-cols-2 lg:grid-cols-3 gap-5", children: categories.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
       motion.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -7438,7 +7429,7 @@ function Skills() {
         whileInView: { opacity: 1 },
         viewport: { once: true },
         transition: { duration: 0.8 },
-        className: "mt-14",
+        className: "relative z-[1] mt-14",
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Wrench, { className: "w-4 h-4 text-accent" }),
@@ -7663,39 +7654,44 @@ function Volunteer() {
     it.title
   )) }) });
 }
+const Scene3D = reactExports.lazy(() => import("./Scene3D-BJyvZLM5.mjs").then((m) => ({ default: m.Scene3D })));
+const ContactScene = reactExports.lazy(() => import("./ContactScene-DzSbgy4i.mjs").then((m) => ({ default: m.ContactScene })));
 function Contact() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Section, { id: "contact", eyebrow: "Get In Touch", title: "Let's build something intelligent.", description: "Available for opportunities in Robotics, Automation, and Intelligent Systems — locally and internationally.", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-2xl mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    motion.div,
-    {
-      initial: { opacity: 0, x: -20 },
-      whileInView: { opacity: 1, x: 0 },
-      viewport: { once: true },
-      transition: { duration: 0.6 },
-      className: "space-y-4",
-      children: [
-        { icon: Mail, label: "Email", value: "mzia9612@gmail.com", href: "mailto:mzia9612@gmail.com" },
-        { icon: Phone, label: "Phone", value: "+92 317 4694078", href: "tel:+923174694078" },
-        { icon: Linkedin, label: "LinkedIn", value: "/in/m-zia-ul-hassan-8076a7206", href: "https://www.linkedin.com/in/m-zia-ul-hassan-8076a7206/" },
-        { icon: MapPin, label: "Based in", value: "Lahore, Pakistan · Open to relocation" }
-      ].map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "a",
-        {
-          href: c.href,
-          target: c.href?.startsWith("http") ? "_blank" : void 0,
-          rel: "noreferrer",
-          className: "group flex items-center gap-4 p-5 rounded-2xl glass hover:border-primary/40 hover:shadow-glow transition-smooth",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(c.icon, { className: "w-5 h-5 text-primary-foreground" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] font-mono uppercase tracking-widest text-muted-foreground", children: c.label }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm font-medium truncate group-hover:text-accent transition-smooth", children: c.value })
-            ] })
-          ]
-        },
-        c.label
-      ))
-    }
-  ) }) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { id: "contact", eyebrow: "Get In Touch", title: "Let's build something intelligent.", description: "Available for opportunities in Robotics, Automation, and Intelligent Systems — locally and internationally.", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 z-0 pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: null, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Scene3D, { className: "!absolute inset-0", camera: { position: [0, 0, 5], fov: 45 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(ContactScene, {}) }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative z-[1] max-w-2xl mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      motion.div,
+      {
+        initial: { opacity: 0, x: -20 },
+        whileInView: { opacity: 1, x: 0 },
+        viewport: { once: true },
+        transition: { duration: 0.6 },
+        className: "space-y-4",
+        children: [
+          { icon: Mail, label: "Email", value: "mzia9612@gmail.com", href: "mailto:mzia9612@gmail.com" },
+          { icon: Phone, label: "Phone", value: "+92 317 4694078", href: "tel:+923174694078" },
+          { icon: Linkedin, label: "LinkedIn", value: "/in/m-zia-ul-hassan-8076a7206", href: "https://www.linkedin.com/in/m-zia-ul-hassan-8076a7206/" },
+          { icon: MapPin, label: "Based in", value: "Lahore, Pakistan · Open to relocation" }
+        ].map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "a",
+          {
+            href: c.href,
+            target: c.href?.startsWith("http") ? "_blank" : void 0,
+            rel: "noreferrer",
+            className: "group flex items-center gap-4 p-5 rounded-2xl glass hover:border-primary/40 hover:shadow-glow transition-smooth",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(c.icon, { className: "w-5 h-5 text-primary-foreground" }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] font-mono uppercase tracking-widest text-muted-foreground", children: c.label }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm font-medium truncate group-hover:text-accent transition-smooth", children: c.value })
+              ] })
+            ]
+          },
+          c.label
+        ))
+      }
+    ) })
+  ] });
 }
 function Footer() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "border-t border-border py-10 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground", children: [
