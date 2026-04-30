@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { Section } from "./Section";
 
 const projects = [
@@ -90,12 +89,9 @@ export function Projects() {
             </div>
 
             <div className="p-6">
-              <div className="flex items-start justify-between gap-3 mb-3">
-                <h3 className="font-display font-semibold text-lg leading-tight group-hover:text-gradient transition-smooth">
-                  {p.title}
-                </h3>
-                <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:-translate-y-1 group-hover:translate-x-1 transition-smooth shrink-0" />
-              </div>
+              <h3 className="font-display font-semibold text-lg leading-tight group-hover:text-gradient transition-smooth mb-3">
+                {p.title}
+              </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.desc}</p>
               <div className="flex flex-wrap gap-1.5">
                 {p.tech.map((t) => (

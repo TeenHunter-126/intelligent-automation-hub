@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import portrait from "@/assets/zia-portrait.png";
 
@@ -34,6 +34,11 @@ function Typewriter() {
 }
 
 export function Hero() {
+  const yearsExperience = useMemo(() => {
+    const start = new Date("2023-11-01").getTime();
+    const years = (Date.now() - start) / (1000 * 60 * 60 * 24 * 365.25);
+    return `${(Math.floor(years * 10) / 10).toFixed(1)}+`;
+  }, []);
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20">
       {/* Background effects */}
@@ -127,7 +132,7 @@ export function Hero() {
             className="mt-14 grid grid-cols-3 gap-6 max-w-md"
           >
             {[
-              { n: "4+", l: "Years Experience" },
+              { n: yearsExperience, l: "Years Experience" },
               { n: "15+", l: "Projects Delivered" },
               { n: "7+", l: "Industrial Systems" },
             ].map((s) => (

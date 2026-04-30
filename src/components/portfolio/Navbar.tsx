@@ -26,8 +26,7 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#top" className="font-display font-bold text-lg tracking-tight">
-          <span className="text-gradient">ZIA</span>
-          <span className="text-muted-foreground">.eng</span>
+          <span className="text-gradient">Zia Ul Hassan</span>
         </a>
         <ul className="hidden md:flex items-center gap-8 text-sm">
           {links.map((l) => (
