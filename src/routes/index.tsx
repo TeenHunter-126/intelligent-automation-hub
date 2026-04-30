@@ -1,26 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { Skills } from "@/components/portfolio/Skills";
+import { Projects } from "@/components/portfolio/Projects";
+import { Experience } from "@/components/portfolio/Experience";
+import { Volunteer } from "@/components/portfolio/Volunteer";
+import { Contact, Footer } from "@/components/portfolio/Contact";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Muhammad Zia Ul Hassan — Mechatronics & Control Engineer" },
+      { name: "description", content: "Portfolio of Muhammad Zia Ul Hassan. Robotics, industrial automation, control systems, and applied machine learning." },
+      { property: "og:title", content: "Muhammad Zia Ul Hassan — Mechatronics & Control Engineer" },
+      { property: "og:description", content: "Building intelligent machines and human-centered automation solutions." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="relative">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Volunteer />
+      <Contact />
+      <Footer />
+      <Toaster />
+    </main>
+  );
 }
