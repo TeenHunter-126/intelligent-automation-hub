@@ -1,0 +1,18 @@
+{
+  "name": "Muhammad Zia Ul Hassan — Mechatronics & Control Engineer",
+  "short_name": "Zia Hassan",
+  "description": "Portfolio of Muhammad Zia Ul Hassan — Robotics, Industrial Automation, Machine Learning, and Control Systems engineer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a2332",
+  "theme_color": "#1a2332",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "engineering", "technology"]
+}
