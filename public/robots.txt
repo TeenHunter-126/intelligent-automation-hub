@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mziahassan.com/sitemap.xml
