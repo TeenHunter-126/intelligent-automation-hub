@@ -1,9 +1,5 @@
 {
   "version": 3,
-  "framework": {
-    "name": "nitro",
-    "version": "3.0.260429-beta"
-  },
   "overrides": {},
   "routes": [
     {
@@ -17,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/__server"
+      "dest": "/__fallback"
     }
   ]
 }
