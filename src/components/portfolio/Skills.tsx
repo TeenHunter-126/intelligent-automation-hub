@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
-import { Code2, Cpu, Bot, Brain, Factory, Activity, Wrench } from "lucide-react";
+import { Code as Code2, Cpu, Bot, Brain, Factory, Activity, Wrench } from "lucide-react";
 import { Section } from "./Section";
 
 const Scene3D = lazy(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })));
