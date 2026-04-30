@@ -1,32 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Mail, Phone, Linkedin, Send, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
 import { Section } from "./Section";
-import { toast } from "sonner";
 
 export function Contact() {
-  const [sending, setSending] = useState(false);
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-    if (!name || !email || !message) return;
-    setSending(true);
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:zia.mechatronics@gmail.com?subject=${subject}&body=${body}`;
-    setTimeout(() => {
-      setSending(false);
-      toast.success("Opening your email client…");
-      (e.target as HTMLFormElement).reset();
-    }, 600);
-  };
-
   return (
     <Section id="contact" eyebrow="Get In Touch" title="Let's build something intelligent." description="Available for opportunities in Robotics, Automation, and Intelligent Systems — locally and internationally.">
-      <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8">
+      <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -35,9 +14,9 @@ export function Contact() {
           className="space-y-4"
         >
           {[
-            { icon: Mail, label: "Email", value: "zia.mechatronics@gmail.com", href: "mailto:zia.mechatronics@gmail.com" },
-            { icon: Phone, label: "Phone", value: "+92 300 0000000", href: "tel:+923000000000" },
-            { icon: Linkedin, label: "LinkedIn", value: "/in/muhammad-zia-ul-hassan", href: "https://linkedin.com" },
+            { icon: Mail, label: "Email", value: "mzia9612@gmail.com", href: "mailto:mzia9612@gmail.com" },
+            { icon: Phone, label: "Phone", value: "+92 317 4694078", href: "tel:+923174694078" },
+            { icon: Linkedin, label: "LinkedIn", value: "/in/m-zia-ul-hassan-8076a7206", href: "https://www.linkedin.com/in/m-zia-ul-hassan-8076a7206/" },
             { icon: MapPin, label: "Based in", value: "Lahore, Pakistan · Open to relocation" },
           ].map((c) => (
             <a
@@ -57,42 +36,6 @@ export function Contact() {
             </a>
           ))}
         </motion.div>
-
-        <motion.form
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          onSubmit={onSubmit}
-          className="glass-strong rounded-3xl p-6 md:p-8 space-y-4"
-        >
-          <div className="grid md:grid-cols-2 gap-4">
-            <label className="block">
-              <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Name</span>
-              <input name="name" required className="mt-1.5 w-full px-4 py-3 rounded-xl bg-secondary/60 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-smooth text-sm" placeholder="Your name" />
-            </label>
-            <label className="block">
-              <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Email</span>
-              <input name="email" type="email" required className="mt-1.5 w-full px-4 py-3 rounded-xl bg-secondary/60 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-smooth text-sm" placeholder="you@company.com" />
-            </label>
-          </div>
-          <label className="block">
-            <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Subject</span>
-            <input name="subject" className="mt-1.5 w-full px-4 py-3 rounded-xl bg-secondary/60 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-smooth text-sm" placeholder="Opportunity / collaboration" />
-          </label>
-          <label className="block">
-            <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Message</span>
-            <textarea name="message" required rows={5} className="mt-1.5 w-full px-4 py-3 rounded-xl bg-secondary/60 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-smooth text-sm resize-none" placeholder="Tell me a bit about what you're building…" />
-          </label>
-          <button
-            type="submit"
-            disabled={sending}
-            className="group w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-medium text-sm shadow-glow hover:scale-[1.01] disabled:opacity-60 transition-smooth"
-          >
-            {sending ? "Sending…" : "Send Message"}
-            <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </motion.form>
       </div>
     </Section>
   );
